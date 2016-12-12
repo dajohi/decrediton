@@ -7,6 +7,7 @@ import walletLoader from './walletLoader'
 import seedService from './seedService'
 import notifications from './notifications'
 import control from './control'
+import settings from './settings'
 
 const rootReducer = combineReducers({
   login,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   seedService,
   notifications,
   control,
+  settings,
   routing
 })
 

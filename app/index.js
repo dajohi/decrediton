@@ -27,6 +27,9 @@ var initialState = {
     isLoggingIn: false,
     error: "",
   },
+  settings: {
+    someSettings: "",
+  },
   grpc: {
     // Balance
     getBalanceRequest: null,
