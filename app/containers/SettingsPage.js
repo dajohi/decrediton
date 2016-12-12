@@ -7,6 +7,7 @@ import * as SettingsActions from '../actions/SettingsActions';
 function mapStateToProps(state) {
   return {
     someSettings: state.settings.someSettings,
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 

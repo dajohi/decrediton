@@ -47,6 +47,8 @@ const SidebarContent = (props) => {
         {page === 'SEND' && <span style={styles.sidebarLinkCurrentPage}>Send Decred</span>}
         {page !== 'RECEIVE' && <Link to="/receive" style={styles.sidebarLink}>Receive Decred</Link>}
         {page === 'RECEIVE' && <span style={styles.sidebarLinkCurrentPage}>Receive Decred</span>}
+        {page !== 'SETTINGS' && <Link to="/settings" style={styles.sidebarLink}>Settings</Link>}
+        {page === 'SETTINGS' && <span style={styles.sidebarLinkCurrentPage}>Settings</span>}
         <div style={styles.divider} />
         <p>maybe decred balance stats down here?</p>
       </div>

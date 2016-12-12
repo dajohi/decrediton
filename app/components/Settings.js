@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-import { Button, Row, Col, Table } from 'react-bootstrap';
+import { FormGroup, Checkbox, Button, Row, Col } from 'react-bootstrap';
 import Sidebar from './SideBar';
 import MaterialTitlePanel from './MaterialTitlePanel';
 import SidebarContent from '../content/SideBarContent';
@@ -36,9 +36,9 @@ class Settings extends Component{
       transitions: false,
       page: "SETTINGS",
     };
-
+    let someSettingsValue
     /* View that will be seen when user has a set Client */
-    const receiveView = (      
+    const settingsView = (      
       <Sidebar {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
           <div>
@@ -66,11 +66,7 @@ class Settings extends Component{
 
     /* Check to see that client is not undefined */
     if (isLoggedIn) {
-      if (client === undefined) {
-        <p>Error occurred, should have client available</p>
-      } else {
-        return(settingsView);
-      }
+      return(settingsView);
     } else {
       return(
         <div>

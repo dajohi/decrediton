@@ -28,7 +28,7 @@ var initialState = {
     error: "",
   },
   settings: {
-    someSettings: "",
+    someSettings: false,
   },
   grpc: {
     // Balance
