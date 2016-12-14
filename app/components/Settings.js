@@ -36,7 +36,7 @@ class Settings extends Component{
       transitions: false,
       page: "SETTINGS",
     };
-    let someSettingsValue
+    let someSettingsValue = someSettings;
     /* View that will be seen when user has a set Client */
     const settingsView = (      
       <Sidebar {...sidebarProps}>
@@ -46,8 +46,8 @@ class Settings extends Component{
               <Col sm={12} >
                 <h1>Settings Page</h1>
                 <form>
-                <FormGroup controlId={someSettingsValue}>
-                  <Checkbox checked={someSettings} inline>
+                <FormGroup>
+                  <Checkbox onChange={() => this.props.checkBoxSetting(someSettingsValue)} checked={(someSettings)} inline>
                     Some Setting
                   </Checkbox>
                 </FormGroup>

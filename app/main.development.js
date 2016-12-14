@@ -133,7 +133,7 @@ app.on('ready', async () => {
   await installExtensions();
 
 
-  if (process.env.NODE_ENV === 'production') {
+  //if (process.env.NODE_ENV === 'production') {
     try {
       launchDCRD();
     } catch (e) {
@@ -144,7 +144,7 @@ app.on('ready', async () => {
     } catch (e) {
       console.log('error launching dcrwallet: ' + e);
     }
-  }
+  //}
 
   mainWindow = new BrowserWindow({
     show: false,
