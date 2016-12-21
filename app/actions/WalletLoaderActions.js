@@ -141,21 +141,17 @@ function openWalletSuccess() {
   };
 }
 
-export function openWalletAttempt(pubPass) {
-
+export function openWalletAttempt(obj) {
   return (dispatch) => {
     dispatch({type: OPENWALLET_ATTEMPT});
-    dispatch(openWalletAction(pubPass));
+    dispatch(openWalletAction(obj));
   };
 }
 
-function openWalletAction(pubPass) {
+function openWalletAction(obj) {
   return (dispatch, getState) => {
     const { loader } = getState().walletLoader;
-    var request = {
-      public_passphrase: Buffer.from(pubPass),
-    };
-    openWallet(loader, request,
+    openWallet(loader, obj,
         function(err) {
           if (err) {
             dispatch(openWalletError(err + ' Please try again'));
@@ -265,21 +261,17 @@ function discoverAddressSuccess() {
   };
 }
 
-export function discoverAddressAttempt(discoverAccts, privPass) {
+export function discoverAddressAttempt(obj) {
   return (dispatch, getState) => {
     dispatch({ type: DISCOVERADDRESS_ATTEMPT });
-    dispatch(discoverAddressAction(discoverAccts, privPass));
+    dispatch(discoverAddressAction(obj));
   };
 }
 
-function discoverAddressAction(discoverAccts, privPass) {
-  var request = {
-    discover_accounts: discoverAccts,
-    private_passphrase: Buffer.from(privPass),
-  };
+function discoverAddressAction(obj) {
   return (dispatch, getState) => {
     const { loader } = getState().walletLoader;
-    discoverAddresses(loader, request,
+    discoverAddresses(loader, obj,
         function(err) {
           if (err) {
             dispatch(discoverAddressError(err + ' Please try again'));

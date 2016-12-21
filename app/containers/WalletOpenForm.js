@@ -9,26 +9,27 @@ const style = {
 };
 
 let WalletOpenForm = ({ dispatch }) => {
-  let pubpass = '';
+  let obj = new Object();
 
   return (
     <div>
       <form id="openWalletForm" onSubmit={e => {
         e.preventDefault();
-        if (pubpass == '') {
+        document.getElementById('openWalletForm').reset();
+
+        if (obj.public_passphrase === undefined ||
+            obj.public_passphrase.length < 1) {
           return;
         }
-        dispatch(openWalletAttempt(pubpass));
-        document.getElementById('openWalletForm').reset();
-        pubpass.fill(0);
-        document.getElementById('pubpass').value = '';
-        pubpass = '';
+
+        dispatch(openWalletAttempt(obj));
+        obj.public_passphrase.fill(0);
       }}>
         <TextField
-          id="pubpass"
+          id="public_passphrase"
           hintText="Public Password"
           floatingLabelText="Public Password"
-          onBlur={(e) =>{pubpass = Buffer.from(e.target.value);}}
+          onBlur={(e) =>{obj.public_passphrase = Buffer.from(e.target.value);}}
         /><br />
         <RaisedButton type="submit"
          style={style}

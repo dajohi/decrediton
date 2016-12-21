@@ -9,30 +9,31 @@ const style = {
 };
 
 let DiscoverAddressForm = ({ dispatch }) => {
-  let privpass = '';
+  let obj = new Object();
 
   return (
     <div>
       <form id="discoverAddress" onSubmit={e => {
         e.preventDefault();
-        if (privpass == '') {
+        document.getElementById('discoverAddress').reset();
+
+        if (obj.private_passphrase === undefined ||
+            obj.private_passphrase.length < 1) {
           return;
         }
-        dispatch(discoverAddressAttempt(true, privpass));
-        document.getElementById('discoverAddress').reset();
-        privpass.fill(0);
-        document.getElementById('privpass').value = '';
-        privpass = '';
+        obj.discover_accounts = true;
+        dispatch(discoverAddressAttempt(obj));
+        obj.private_passphrase.fill(0);
       }}>
         <TextField
-          id="privpass"
+          id="private_passphrase"
           hintText="Private Password"
           floatingLabelText="Private Password"
-          onBlur={(e) =>{privpass = Buffer.from(e.target.value);}}
+          onBlur={(e) =>{obj.private_passphrase = Buffer.from(e.target.value);}}
         /><br />
         <RaisedButton type="submit"
-         style={style}
-         label='Discover Addresses'/>
+          style={style}
+          label='Discover Addresses'/>
       </form>
     </div>
   );
