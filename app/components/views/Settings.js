@@ -39,7 +39,9 @@ const styles = {
 class Settings extends Component{
   static propTypes = {
     walletService: PropTypes.object,
-    currencyDisplay: PropTypes.string
+    currentSettings: PropTypes.object,
+    tempSettings: PropTypes.object,
+    settingsChanged: PropTypes.bool
   };
   handleSaveSettingsClick = (settings) => {
     this.props.saveSettings(settings);
@@ -47,9 +49,6 @@ class Settings extends Component{
   //handleCurrencyChange
   render() {
     const { walletService, currentSettings, settingsChanged, tempSettings, updateStateSettingsChanged } = this.props;
-    var settings = {
-      currencyDisplay: tempSettings.currencyDisplay,
-    };
     const settingsView = (
       <div style={styles.view}>
         <Header headerTitleOverview="Settings" />
@@ -57,10 +56,10 @@ class Settings extends Component{
           <div style={styles.label}>
             Displayed Units
           </div>
-          <select defaultValue={currentSettings.currencyDisplay}
+          <select defaultValue={currentSettings.get('currencyDisplay')}
             onChange={(e) => {
-              settings.currencyDisplay = e.target.value;
-              updateStateSettingsChanged(settings);
+              tempSettings.set('currencyDisplay', e.target.value);
+              updateStateSettingsChanged(tempSettings);
             }}>
             <option value="DCR">DCR</option>
             <option value="atoms">atoms</option>

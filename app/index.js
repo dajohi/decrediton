@@ -16,6 +16,7 @@ var neededBlocks = 0;
 var today = new Date();
 var startDate = new Date();
 var totalDays = 0.0;
+var localSettings = require('electron-settings');
 
 if (cfg.network == 'testnet') {
   grpcport = cfg.wallet_port_testnet;
@@ -32,12 +33,8 @@ if (cfg.network == 'testnet') {
 
 var initialState = {
   settings: {
-    currentSettings: {
-      currencyDisplay: 'DCR',
-    },
-    tempSettings: {
-      currencyDisplay: 'DCR',
-    },
+    currentSettings: localSettings,
+    tempSettings: localSettings,
     settingsChanged: false,
   },
   version: {

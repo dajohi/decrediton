@@ -28,8 +28,8 @@ export function saveSettings(settings) {
 export function updateStateSettingsChanged(settings) {
   return (dispatch, getState) => {
     const { tempSettings, currentSettings } = getState().settings;
-    if (settings.currencyDisplay !== tempSettings.currencyDisplay) {
-      if (settings.currencyDisplay !== currentSettings.currencyDisplay) {
+    if (settings.get('currencyDisplay') !== tempSettings.get('currencyDisplay')) {
+      if (settings.get('currencyDisplay') !== currentSettings.get('currencyDisplay')) {
         console.log('settings changed! different than currentSettings');
         dispatch({ tempSettings: settings, type: SETTINGS_CHANGED});
       } else {

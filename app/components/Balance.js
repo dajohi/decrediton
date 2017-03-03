@@ -24,7 +24,8 @@ var styles = {
 class Balance extends React.Component {
   render() {
     const { currentSettings } = this.props;
-    if (currentSettings.currencyDisplay === 'DCR') {
+    // TODO: remove has() and make defaults somewhere.
+    if (!currentSettings.has('currencyDisplay') || currentSettings.get('currencyDisplay') === 'DCR') {
       var totalDcr = 0;
       var numberFormatPart = ['0','0'];
       if (typeof this.props.amount !== 'undefined' && this.props.amount !== 0) {
@@ -41,7 +42,7 @@ class Balance extends React.Component {
           <span style={styles.small}> DCR</span>
         </span>
       );
-    } else if (currentSettings.currencyDisplay === 'atoms') {
+    } else if (currentSettings.get('currencyDisplay') === 'atoms') {
       return (
         <span
         style={styles.base}

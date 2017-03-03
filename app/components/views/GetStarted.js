@@ -312,7 +312,7 @@ class Home extends Component{
       <div style={styles.view}>
         <Header getStarted
           headerTitleOverview="Opening Wallet"
-          headerMetaOverview="Please enter the information below to  create your dcrwallet"
+          headerMetaOverview="Please enter the information below to open your wallet."
         />
         <div style={styles.contentNewSeed}>
           { walletOpenRequestAttempt ?
@@ -325,7 +325,7 @@ class Home extends Component{
                     <input
                       style={styles.inputPrivatePassword}
                       type="password"
-                      placeholder="Private Passphrase"
+                      placeholder="Master PubKey Passphrase"
                       onBlur={(e)=>this.setState({pubpass:e.target.value})}/>
                   </form>
                 </div>
